@@ -1,0 +1,93 @@
+#1. Print your name
+echo "Oluwasefunmi" 
+#2. Create a folder titled your name
+mkdir Oluwasefunmi 
+#list to be sure the folder is present.
+ls
+#3. Create another new directory titled biocomputing and change to that directory with one line of command
+mkdir biocomputing && cd biocomputing 
+#4. Download these 3 files 
+wget https://raw.githubusercontent.com/josoga2/dataset-repos/main/wildtype.fna && wget https://raw.githubusercontent.com/josoga2/dataset-repos/main/wildtype.gbk && wget https://raw.githubusercontent.com/josoga2/dataset-repos/main/wildtype.gbk
+#list to be sure the folder is present
+ls 
+#5. Move the .fna file to the folder titled your name
+mv wildtype.fna ../Oluwasefunmi/
+#6. Delete the duplicate gbk file 
+#list to see the folders then use rm to remove the replicate then list again
+ls 
+rm wildtype.gbk.1
+ls
+#7. Confirm if the .fna file is mutant or wild type (tatatata vs tata)
+#move out of the biocomputing folder then into the Oluwasefunmi folder where the .fna file is
+cd ../ 
+cd Oluwasefunmi/ 
+grep -i "tatatata" wildtype.fna 
+#8. If mutant, print all matching lines into a new file
+grep -i "tatatata" wildtype.fna > mutant.fna
+#list to be sure the file is present and cat to see if the lines were copied.
+ls
+cat mutant.fna 
+#9. Count number of lines (excluding header) in the .gbk file
+#move out of Oluwasefunmi folder then move in to biocomputing
+cd ../ 
+cd biocomputing/
+#print the head to be sure of the first line
+head wildtype.gbk 
+grep -v "^LOCUS" wildtype.gbk |wc -l 
+#10. Print the sequence length of the .gbk file. (Use the LOCUS tag in the first line)
+awk '/^LOCUS/ {print $3}' wildtype.gbk
+#11. Print the source organism of the .gbk file. (Use the SOURCE tag in the first line)
+awk '/^SOURCE/ {print $2, $3}' wildtype.gbk
+#12. List all the gene names of the .gbk file. Hint {grep '/gene='}
+grep '/gene=' wildtype.gbk 
+#13. Clear your terminal space and print all commands used today 
+#move out of the folder
+cd ../
+clear 
+history
+# 14 List the files in the two folders
+ls biocomputing
+ls Oluwasefunmi
+
+
+#PROJECT TWO
+
+#1. Activate your base conda environment
+ conda activate
+#2.Create a conda environment named funtools
+conda create -n funtools python=3.10 -y
+#3. Activate the funtools environment
+conda activate funtools
+#4. Install Figlet using conda or apt-get
+sudo apt-get update
+sudo apt-get install figlet -y
+#5. Run figlet <your name> 
+figlet oluwasefunmi
+#6. Install bwa through the bioconda channel
+#after every installation I checked for the version to be sure they were installed.
+conda install -c bioconda bwa
+bwa
+#7. Install blast through the bioconda channel
+conda install -c bioconda blast
+blastn -version
+#8. Install samtools through the bioconda channel
+conda install -c bioconda samtools 
+samtools --version
+#9.Install bedtools through the bioconda channel 
+conda install -c bioconda bedtools
+bedtools —version 
+#10.Install spades.py through the bioconda channel
+conda install -c conda-forge -c bioconda spades -y
+spades.py —version
+#11. Install bcftools through the bioconda channel
+conda install -c conda-forge -c bioconda bcftools
+bcftools —version
+#12. Install fastp through the bioconda channel 
+conda install -c conda-forge -c bioconda fastp
+fastp --version
+#13. Install multiqc through the bioconda channel
+conda install -c conda-forge -c bioconda multiqc 
+multiqc --version
+
+
+ 
