@@ -75,13 +75,13 @@ conda install -c bioconda samtools
 samtools --version
 #9.Install bedtools through the bioconda channel 
 conda install -c bioconda bedtools
-bedtools -—version 
+bedtools --version 
 #10.Install spades.py through the bioconda channel
 conda install -c conda-forge -c bioconda spades -y
-spades.py -—version
+spades.py --version
 #11. Install bcftools through the bioconda channel
 conda install -c conda-forge -c bioconda bcftools
-bcftools -—version
+bcftools --version
 #12. Install fastp through the bioconda channel 
 conda install -c conda-forge -c bioconda fastp
 fastp --version
